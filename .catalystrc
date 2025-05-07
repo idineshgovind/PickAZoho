@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "3269000000036001",
+      "name": "PickAZoho",
+      "domain": {
+        "id": "10099162172",
+        "name": "pickazoho-804550835.development"
+      },
+      "timezone": "Asia/Kolkata",
+      "env": [
+        {
+          "idx": 1,
+          "id": "804550835",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}

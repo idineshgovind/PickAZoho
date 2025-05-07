@@ -1,120 +1,171 @@
 /**
  * Array of Zoho product logos organized by categories
  */
+// Image imports
+import CRMImg from "../assets/crm.png";
+import BiginImg from "../assets/bigin.png";
+import CardScannerImg from "../assets/cardscanner.png";
+import FormsImg from "../assets/forms.png";
+import BookingsImg from "../assets/bookings.png";
+import SocialImg from "../assets/social.png";
+import CampaignsImg from "../assets/campaigns.png";
+import SurveyImg from "../assets/survey.png";
+import BackstageImg from "../assets/backstage.png";
+import WebinarImg from "../assets/webinar.png";
+import DeskImg from "../assets/desk.png";
+import AssistImg from "../assets/assist.png";
+import LensImg from "../assets/lens.png";
+import BooksImg from "../assets/books.png";
+import InvoiceImg from "../assets/invoice.png";
+import ExpenseImg from "../assets/expense.png";
+import InventoryImg from "../assets/inventory.png";
+import BillingImg from "../assets/billing.png";
+import PayrollImg from "../assets/payroll.png";
+import PeopleImg from "../assets/people.png";
+import RecruitImg from "../assets/recruit.png";
+import WorkerlyImg from "../assets/workerly.png";
+import LearnImg from "../assets/learn.png";
+import ShiftsImg from "../assets/shifts.png";
+import ContractsImg from "../assets/contracts.png";
+import OneauthImg from "../assets/oneauth.png";
+import VaultImg from "../assets/vault.png";
+import DirectoryImg from "../assets/directory.png";
+import MailImg from "../assets/mail.png";
+import WorkplaceImg from "../assets/workplace.png";
+import WriterImg from "../assets/writer.png";
+import SheetImg from "../assets/sheet.png";
+import ShowImg from "../assets/show.png";
+import NotebookImg from "../assets/notebook.png";
+import CalendarImg from "../assets/calendar.png";
+import WorkDriveImg from "../assets/workdrive.png";
+import CliqImg from "../assets/cliq.png";
+import MeetingImg from "../assets/meeting.png";
+import SignImg from "../assets/sign.png";
+import DocScannerImg from "../assets/zohoscanner.png";
+import ToDoImg from "../assets/todo.png";
+import TablesImg from "../assets/tables.png";
+import AnalyticsImg from "../assets/analytics.png";
+import ProjectsImg from "../assets/projects.png";
+import SprintsImg from "../assets/sprints.png";
+import CreatorImg from "../assets/creator.png";
+import AppticsImg from "../assets/apptics.png";
+
+// Product categories
 export const productCategories = {
   "Zoho One": [
-    { name: "CRM", image: "./images/crm.png" },
-    { name: "Bigin", image: "./images/bigin.png" },
-    { name: "Card Scanner", image: "./images/cardscanner.png" },
-    { name: "Forms", image: "./images/forms.png" },
-    { name: "Bookings", image: "./images/bookings.png" },
-    { name: "Social", image: "./images/social.png" },
-    { name: "Campaigns", image: "./images/campaigns.png" },
-    { name: "Survey", image: "./images/survey.png" },
-    { name: "Backstage", image: "./images/backstage.png" },
-    { name: "Webinar", image: "./images/webinar.png" },
-    { name: "Desk", image: "./images/desk.png" },
-    { name: "Assist", image: "./images/assist.png" },
-    { name: "Lens", image: "./images/lens.png" },
-    { name: "Books", image: "./images/books.png" },
-    { name: "Invoice", image: "./images/invoice.png" },
-    { name: "Expense", image: "./images/expense.png" },
-    { name: "Inventory", image: "./images/inventory.png" },
-    { name: "Billing", image: "./images/billing.png" },
-    { name: "Payroll", image: "./images/payroll.png" },
-    { name: "People", image: "./images/people.png" },
-    { name: "Recruit", image: "./images/recruit.png" },
-    { name: "Workerly", image: "./images/workerly.png" },
-    { name: "Learn", image: "./images/learn.png" },
-    { name: "Shifts", image: "./images/shifts.png" },
-    { name: "Contracts", image: "./images/contracts.png" },
-    { name: "Oneauth", image: "./images/oneauth.png" },
-    { name: "Vault", image: "./images/vault.png" },
-    { name: "Directory", image: "./images/directory.png" },
-    { name: "Mail", image: "./images/mail.png" },
-    { name: "Workplace", image: "./images/workplace.png" },
-    { name: "Writer", image: "./images/writer.png" },
-    { name: "Sheet", image: "./images/sheet.png" },
-    { name: "Show", image: "./images/show.png" },
-    { name: "Notebook", image: "./images/notebook.png" },
-    { name: "Calendar", image: "./images/calendar.png" },
-    { name: "WorkDrive", image: "./images/workdrive.png" },
-    { name: "Cliq", image: "./images/cliq.png" },
-    { name: "Meeting", image: "./images/meeting.png" },
-    { name: "Sign", image: "./images/sign.png" },
-    { name: "Doc Scanner", image: "./images/zohoscanner.png" },
-    { name: "ToDo", image: "./images/todo.png" },
-    { name: "Tables", image: "./images/tables.png" },
-    { name: "Analytics", image: "./images/analytics.png" },
-    { name: "Projects", image: "./images/projects.png" },
-    { name: "Sprints", image: "./images/sprints.png" },
-    { name: "Creator", image: "./images/creator.png" },
-    { name: "Apptics", image: "./images/apptics.png" }
+    { name: "CRM", image: CRMImg },
+    { name: "Bigin", image: BiginImg },
+    { name: "Card Scanner", image: CardScannerImg },
+    { name: "Forms", image: FormsImg },
+    { name: "Bookings", image: BookingsImg },
+    { name: "Social", image: SocialImg },
+    { name: "Campaigns", image: CampaignsImg },
+    { name: "Survey", image: SurveyImg },
+    { name: "Backstage", image: BackstageImg },
+    { name: "Webinar", image: WebinarImg },
+    { name: "Desk", image: DeskImg },
+    { name: "Assist", image: AssistImg },
+    { name: "Lens", image: LensImg },
+    { name: "Books", image: BooksImg },
+    { name: "Invoice", image: InvoiceImg },
+    { name: "Expense", image: ExpenseImg },
+    { name: "Inventory", image: InventoryImg },
+    { name: "Billing", image: BillingImg },
+    { name: "Payroll", image: PayrollImg },
+    { name: "People", image: PeopleImg },
+    { name: "Recruit", image: RecruitImg },
+    { name: "Workerly", image: WorkerlyImg },
+    { name: "Learn", image: LearnImg },
+    { name: "Shifts", image: ShiftsImg },
+    { name: "Contracts", image: ContractsImg },
+    { name: "Oneauth", image: OneauthImg },
+    { name: "Vault", image: VaultImg },
+    { name: "Directory", image: DirectoryImg },
+    { name: "Mail", image: MailImg },
+    { name: "Workplace", image: WorkplaceImg },
+    { name: "Writer", image: WriterImg },
+    { name: "Sheet", image: SheetImg },
+    { name: "Show", image: ShowImg },
+    { name: "Notebook", image: NotebookImg },
+    { name: "Calendar", image: CalendarImg },
+    { name: "WorkDrive", image: WorkDriveImg },
+    { name: "Cliq", image: CliqImg },
+    { name: "Meeting", image: MeetingImg },
+    { name: "Sign", image: SignImg },
+    { name: "Doc Scanner", image: DocScannerImg },
+    { name: "ToDo", image: ToDoImg },
+    { name: "Tables", image: TablesImg },
+    { name: "Analytics", image: AnalyticsImg },
+    { name: "Projects", image: ProjectsImg },
+    { name: "Sprints", image: SprintsImg },
+    { name: "Creator", image: CreatorImg },
+    { name: "Apptics", image: AppticsImg }
   ],
   "Sales and Service": [
-    { name: "CRM", image: "./images/crm.png" },
-    { name: "Bigin", image: "./images/bigin.png" },
-    { name: "Card Scanner", image: "./images/cardscanner.png" },
-    { name: "Forms", image: "./images/forms.png" },
-    { name: "Bookings", image: "./images/bookings.png" },
-    { name: "Desk", image: "./images/desk.png" },
-    { name: "Assist", image: "./images/assist.png" },
-    { name: "Lens", image: "./images/lens.png" }
+    { name: "CRM", image: CRMImg },
+    { name: "Bigin", image: BiginImg },
+    { name: "Card Scanner", image: CardScannerImg },
+    { name: "Forms", image: FormsImg },
+    { name: "Bookings", image: BookingsImg },
+    { name: "Desk", image: DeskImg },
+    { name: "Assist", image: AssistImg },
+    { name: "Lens", image: LensImg }
   ],
   "Marketing": [
-    { name: "Social", image: "./images/social.png" },
-    { name: "Campaigns", image: "./images/campaigns.png" },
-    { name: "Survey", image: "./images/survey.png" },
-    { name: "Backstage", image: "./images/backstage.png" },
-    { name: "Webinar", image: "./images/webinar.png" }
+    { name: "Social", image: SocialImg },
+    { name: "Campaigns", image: CampaignsImg },
+    { name: "Survey", image: SurveyImg },
+    { name: "Backstage", image: BackstageImg },
+    { name: "Webinar", image: WebinarImg }
   ],
   "Human Resources and Legal": [
-    { name: "People", image: "./images/people.png" },
-    { name: "Recruit", image: "./images/recruit.png" },
-    { name: "Workerly", image: "./images/workerly.png" },
-    { name: "Learn", image: "./images/learn.png" },
-    { name: "Shifts", image: "./images/shifts.png" },
-    { name: "Contracts", image: "./images/contracts.png" },
-    { name: "Payroll", image: "./images/payroll.png" }
+    { name: "People", image: PeopleImg },
+    { name: "Recruit", image: RecruitImg },
+    { name: "Workerly", image: WorkerlyImg },
+    { name: "Learn", image: LearnImg },
+    { name: "Shifts", image: ShiftsImg },
+    { name: "Contracts", image: ContractsImg },
+    { name: "Payroll", image: PayrollImg }
   ],
   "Finance": [
-    { name: "Books", image: "./images/books.png" },
-    { name: "Invoice", image: "./images/invoice.png" },
-    { name: "Expense", image: "./images/expense.png" },
-    { name: "Inventory", image: "./images/inventory.png" },
-    { name: "Billing", image: "./images/billing.png" }
+    { name: "Books", image: BooksImg },
+    { name: "Invoice", image: InvoiceImg },
+    { name: "Expense", image: ExpenseImg },
+    { name: "Inventory", image: InventoryImg },
+    { name: "Billing", image: BillingImg }
   ],
   "Security and IT Management": [
-    { name: "Oneauth", image: "./images/oneauth.png" },
-    { name: "Vault", image: "./images/vault.png" },
-    { name: "Directory", image: "./images/directory.png" }
+    { name: "Oneauth", image: OneauthImg },
+    { name: "Vault", image: VaultImg },
+    { name: "Directory", image: DirectoryImg }
   ],
   "Email and Collaboration": [
-    { name: "Mail", image: "./images/mail.png" },
-    { name: "Workplace", image: "./images/workplace.png" },
-    { name: "Writer", image: "./images/writer.png" },
-    { name: "Sheet", image: "./images/sheet.png" },
-    { name: "Show", image: "./images/show.png" },
-    { name: "Notebook", image: "./images/notebook.png" },
-    { name: "Calendar", image: "./images/calendar.png" },
-    { name: "WorkDrive", image: "./images/workdrive.png" },
-    { name: "Cliq", image: "./images/cliq.png" },
-    { name: "Meeting", image: "./images/meeting.png" },
-    { name: "Sign", image: "./images/sign.png" },
-    { name: "Doc Scanner", image: "./images/zohoscanner.png" },
-    { name: "ToDo", image: "./images/todo.png" }
+    { name: "Mail", image: MailImg },
+    { name: "Workplace", image: WorkplaceImg },
+    { name: "Writer", image: WriterImg },
+    { name: "Sheet", image: SheetImg },
+    { name: "Show", image: ShowImg },
+    { name: "Notebook", image: NotebookImg },
+    { name: "Calendar", image: CalendarImg },
+    { name: "WorkDrive", image: WorkDriveImg },
+    { name: "Cliq", image: CliqImg },
+    { name: "Meeting", image: MeetingImg },
+    { name: "Sign", image: SignImg },
+    { name: "Doc Scanner", image: DocScannerImg },
+    { name: "ToDo", image: ToDoImg }
   ],
   "Project Management and Analytics": [
-    { name: "Projects", image: "./images/projects.png" },
-    { name: "Sprints", image: "./images/sprints.png" },
-    { name: "Analytics", image: "./images/analytics.png" },
-    { name: "Tables", image: "./images/tables.png" }
+    { name: "Projects", image: ProjectsImg },
+    { name: "Sprints", image: SprintsImg },
+    { name: "Analytics", image: AnalyticsImg },
+    { name: "Tables", image: TablesImg }
   ],
   "Developer Platforms": [
-    { name: "Creator", image: "./images/creator.png" },
-    { name: "Apptics", image: "./images/apptics.png" }
+    { name: "Creator", image: CreatorImg },
+    { name: "Apptics", image: AppticsImg }
   ]
 };
+
 
 export const placeholderImages = [];
 

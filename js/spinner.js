@@ -20,7 +20,7 @@ class FortuneSpinner {
     this.currentProductIndex = 0;
     
     // Set the initial logo to zoho.png
-    this.currentLogoElement.src = 'images/zoho.png';
+    this.currentLogoElement.src = 'assets/zoho.png';
     this.currentLogoElement.alt = 'Zoho';
 
     // Set up tab click handlers
@@ -43,7 +43,7 @@ class FortuneSpinner {
         this.currentProductIndex = 0;
 
         // Reset the logo to zoho.png when changing tabs
-        this.currentLogoElement.src = 'images/zoho.png';
+        this.currentLogoElement.src = 'assets/zoho.png';
         this.currentLogoElement.alt = 'Zoho';
       });
     });
@@ -158,7 +158,7 @@ class FortuneSpinner {
       this.updateDisplayedLogo(this.products[0]);
 
       // Reset the logo to zoho.png when resetting the spinner
-      this.currentLogoElement.src = 'images/zoho.png';
+      this.currentLogoElement.src = 'assets/zoho.png';
       this.currentLogoElement.alt = 'Zoho';
     }, 300);
   }
