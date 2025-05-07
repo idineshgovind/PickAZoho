@@ -9,7 +9,7 @@
  * @param {number} duration - Duration in milliseconds
  * @returns {Promise} Resolves when animation is complete
  */
-export function animateElement(element, className, duration = 1000) {
+function animateElement(element, className, duration = 1000) {
   return new Promise(resolve => {
     element.classList.add(className);
     
@@ -27,7 +27,7 @@ export function animateElement(element, className, duration = 1000) {
  * @param {number} duration - Duration in milliseconds
  * @returns {Promise} Resolves when animation is complete
  */
-export function shakeElement(element, intensity = 5, duration = 500) {
+function shakeElement(element, intensity = 5, duration = 500) {
   const originalPosition = element.style.transform;
   const steps = 10;
   const interval = duration / steps;
@@ -58,7 +58,7 @@ export function shakeElement(element, intensity = 5, duration = 500) {
  * @param {number} duration - Duration in milliseconds
  * @returns {Promise} Resolves when animation is complete
  */
-export function pulseElement(element, scale = 1.1, duration = 500) {
+function pulseElement(element, scale = 1.1, duration = 500) {
   const originalTransform = element.style.transform;
   
   return new Promise(resolve => {
@@ -84,7 +84,7 @@ export function pulseElement(element, scale = 1.1, duration = 500) {
  * @param {number} particleCount - Number of confetti particles
  * @param {number} duration - Duration in milliseconds
  */
-export function showConfetti(container, particleCount = 50, duration = 2000) {
+function showConfetti(container, particleCount = 50, duration = 2000) {
   const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4'];
   const confettiContainer = document.createElement('div');
   
@@ -143,3 +143,9 @@ export function showConfetti(container, particleCount = 50, duration = 2000) {
     confettiContainer.remove();
   }, duration);
 }
+
+// Expose functions globally
+window.animateElement = animateElement;
+window.shakeElement = shakeElement;
+window.pulseElement = pulseElement;
+window.showConfetti = showConfetti;

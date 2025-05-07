@@ -1,4 +1,136 @@
-import { getRandomProduct, createDemoProducts } from './data.js';
+// Inline product data and utility functions from data.js
+const productCategories = {
+  "Zoho One": [
+    { name: "CRM", image: "assets/crm.png" },
+    { name: "Bigin", image: "assets/bigin.png" },
+    { name: "Card Scanner", image: "assets/cardscanner.png" },
+    { name: "Forms", image: "assets/forms.png" },
+    { name: "Bookings", image: "assets/bookings.png" },
+    { name: "Social", image: "assets/social.png" },
+    { name: "Campaigns", image: "assets/campaigns.png" },
+    { name: "Survey", image: "assets/survey.png" },
+    { name: "Backstage", image: "assets/backstage.png" },
+    { name: "Webinar", image: "assets/webinar.png" },
+    { name: "Desk", image: "assets/desk.png" },
+    { name: "Assist", image: "assets/assist.png" },
+    { name: "Lens", image: "assets/lens.png" },
+    { name: "Books", image: "assets/books.png" },
+    { name: "Invoice", image: "assets/invoice.png" },
+    { name: "Expense", image: "assets/expense.png" },
+    { name: "Inventory", image: "assets/inventory.png" },
+    { name: "Billing", image: "assets/billing.png" },
+    { name: "Payroll", image: "assets/payroll.png" },
+    { name: "People", image: "assets/people.png" },
+    { name: "Recruit", image: "assets/recruit.png" },
+    { name: "Workerly", image: "assets/workerly.png" },
+    { name: "Learn", image: "assets/learn.png" },
+    { name: "Shifts", image: "assets/shifts.png" },
+    { name: "Contracts", image: "assets/contracts.png" },
+    { name: "Oneauth", image: "assets/oneauth.png" },
+    { name: "Vault", image: "assets/vault.png" },
+    { name: "Directory", image: "assets/directory.png" },
+    { name: "Mail", image: "assets/mail.png" },
+    { name: "Workplace", image: "assets/workplace.png" },
+    { name: "Writer", image: "assets/writer.png" },
+    { name: "Sheet", image: "assets/sheet.png" },
+    { name: "Show", image: "assets/show.png" },
+    { name: "Notebook", image: "assets/notebook.png" },
+    { name: "Calendar", image: "assets/calendar.png" },
+    { name: "WorkDrive", image: "assets/workdrive.png" },
+    { name: "Cliq", image: "assets/cliq.png" },
+    { name: "Meeting", image: "assets/meeting.png" },
+    { name: "Sign", image: "assets/sign.png" },
+    { name: "Doc Scanner", image: "assets/zohoscanner.png" },
+    { name: "ToDo", image: "assets/todo.png" },
+    { name: "Tables", image: "assets/tables.png" },
+    { name: "Analytics", image: "assets/analytics.png" },
+    { name: "Projects", image: "assets/projects.png" },
+    { name: "Sprints", image: "assets/sprints.png" },
+    { name: "Creator", image: "assets/creator.png" },
+    { name: "Apptics", image: "assets/apptics.png" }
+  ],
+  "Sales and Service": [
+    { name: "CRM", image: "assets/crm.png" },
+    { name: "Bigin", image: "assets/bigin.png" },
+    { name: "Card Scanner", image: "assets/cardscanner.png" },
+    { name: "Forms", image: "assets/forms.png" },
+    { name: "Bookings", image: "assets/bookings.png" },
+    { name: "Desk", image: "assets/desk.png" },
+    { name: "Assist", image: "assets/assist.png" },
+    { name: "Lens", image: "assets/lens.png" }
+  ],
+  "Marketing": [
+    { name: "Social", image: "assets/social.png" },
+    { name: "Campaigns", image: "assets/campaigns.png" },
+    { name: "Survey", image: "assets/survey.png" },
+    { name: "Backstage", image: "assets/backstage.png" },
+    { name: "Webinar", image: "assets/webinar.png" }
+  ],
+  "Human Resources and Legal": [
+    { name: "People", image: "assets/people.png" },
+    { name: "Recruit", image: "assets/recruit.png" },
+    { name: "Workerly", image: "assets/workerly.png" },
+    { name: "Learn", image: "assets/learn.png" },
+    { name: "Shifts", image: "assets/shifts.png" },
+    { name: "Contracts", image: "assets/contracts.png" },
+    { name: "Payroll", image: "assets/payroll.png" }
+  ],
+  "Finance": [
+    { name: "Books", image: "assets/books.png" },
+    { name: "Invoice", image: "assets/invoice.png" },
+    { name: "Expense", image: "assets/expense.png" },
+    { name: "Inventory", image: "assets/inventory.png" },
+    { name: "Billing", image: "assets/billing.png" }
+  ],
+  "Security and IT Management": [
+    { name: "Oneauth", image: "assets/oneauth.png" },
+    { name: "Vault", image: "assets/vault.png" },
+    { name: "Directory", image: "assets/directory.png" }
+  ],
+  "Email and Collaboration": [
+    { name: "Mail", image: "assets/mail.png" },
+    { name: "Workplace", image: "assets/workplace.png" },
+    { name: "Writer", image: "assets/writer.png" },
+    { name: "Sheet", image: "assets/sheet.png" },
+    { name: "Show", image: "assets/show.png" },
+    { name: "Notebook", image: "assets/notebook.png" },
+    { name: "Calendar", image: "assets/calendar.png" },
+    { name: "WorkDrive", image: "assets/workdrive.png" },
+    { name: "Cliq", image: "assets/cliq.png" },
+    { name: "Meeting", image: "assets/meeting.png" },
+    { name: "Sign", image: "assets/sign.png" },
+    { name: "Doc Scanner", image: "assets/zohoscanner.png" },
+    { name: "ToDo", image: "assets/todo.png" }
+  ],
+  "Project Management and Analytics": [
+    { name: "Projects", image: "assets/projects.png" },
+    { name: "Sprints", image: "assets/sprints.png" },
+    { name: "Analytics", image: "assets/analytics.png" },
+    { name: "Tables", image: "assets/tables.png" }
+  ],
+  "Developer Platforms": [
+    { name: "Creator", image: "assets/creator.png" },
+    { name: "Apptics", image: "assets/apptics.png" }
+  ]
+};
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+function getRandomProduct(category) {
+  const products = shuffleArray([...productCategories[category]]);
+  const randomIndex = Math.floor(Math.random() * products.length);
+  return products[randomIndex];
+}
+
+function createDemoProducts(category) {
+  return shuffleArray([...productCategories[category]]);
+}
 
 class FortuneSpinner {
   constructor() {
@@ -164,4 +296,5 @@ class FortuneSpinner {
   }
 }
 
-export default FortuneSpinner;
+// Remove export statement and make FortuneSpinner globally accessible
+window.FortuneSpinner = FortuneSpinner;

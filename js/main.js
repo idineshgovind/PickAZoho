@@ -1,5 +1,4 @@
-import FortuneSpinner from './spinner.js';
-import { pulseElement, showConfetti } from './animations.js';
+// Remove import statements and assume dependencies are loaded globally
 
 // Initialize the spinner when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {

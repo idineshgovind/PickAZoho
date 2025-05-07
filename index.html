@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="./assets/notebook.png" />
+    <link rel="icon" type="image/png" href="../assets/notebook.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pick-a-Zoho</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
     <div class="container">
       <div class="background-gradient"></div>
       <header>
-        <img src="./assets/zoho.png" alt="Zoho" class="zoho-logo" />
+        <img src="assets/zoho.png" alt="Zoho" class="zoho-logo" />
         <h1>Pick-a-Zoho</h1>
         <p class="subtitle">How Zoho are you? Let’s find out!</p>
       </header>
@@ -37,7 +37,7 @@
 
         <div id="result" class="result hidden">
           <div class="winner-message">
-            <h2>🎉 Show your mobile — if you have our app, you're the winner!</h2>
+            <h2>🎉 Show us this Zoho app on your phone and win the spin!</h2>
             <div class="winner-logo-container">
               <img id="winner-logo" src="" alt="Winner" class="winner-logo" />
               <p id="winner-name" class="winner-name"></p>
@@ -50,7 +50,7 @@
           <div class="spinner-glow"></div>
           <div id="spinner" class="spinner">
             <div id="spinner-display" class="spinner-display">
-              <img id="current-logo" src="./assets/zoho.png" alt="Zoho" class="logo-image" />
+              <img id="current-logo" src="assets/zoho.png" alt="Zoho" class="logo-image" />
             </div>
           </div>
           
@@ -65,6 +65,8 @@
       </footer>
     </div>
     
-    <script type="module" src="./js/main.js"></script>
+    <script src="./js/animations.js"></script>
+    <script src="./js/spinner.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>
