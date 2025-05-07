@@ -1,4 +1,4 @@
-import { getRandomProduct, zohoProducts } from './data.js';
+import { getRandomProduct, createDemoProducts } from './data.js';
 
 class FortuneSpinner {
   constructor() {
@@ -15,41 +15,61 @@ class FortuneSpinner {
     this.spinningTimeLeft = 0;
     this.slowdownFactor = 1.05; // factor to slow down spinning
     
-    // Use actual Zoho product logos for spinning
-    this.products = zohoProducts;
-    // Use -1 so initial display remains the Zoho logo in HTML
-    this.currentProductIndex = -1;
+    this.currentCategory = "Zoho One";
+    this.products = createDemoProducts(this.currentCategory);
+    this.currentProductIndex = 0;
+    
+    // Set the initial logo to zoho.png
+    this.currentLogoElement.src = 'images/zoho.png';
+    this.currentLogoElement.alt = 'Zoho';
+
+    // Set up tab click handlers
+    this.initializeTabs();
   }
 
-  /**
-   * Shuffle products array in place using Fisher–Yates algorithm
-   */
-  shuffleProducts() {
-    for (let i = this.products.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [this.products[i], this.products[j]] = [this.products[j], this.products[i]];
-    }
+  initializeTabs() {
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        if (this.isSpinning) return; // Prevent tab switching while spinning
+        
+        // Update active tab
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // Update current category and products
+        this.currentCategory = tab.dataset.category;
+        this.products = createDemoProducts(this.currentCategory);
+        this.currentProductIndex = 0;
+
+        // Reset the logo to zoho.png when changing tabs
+        this.currentLogoElement.src = 'images/zoho.png';
+        this.currentLogoElement.alt = 'Zoho';
+      });
+    });
+
+    // Method to toggle tab interactivity
+    this.toggleTabs = (enabled) => {
+      tabs.forEach(tab => {
+        if (enabled) {
+          tab.classList.remove('disabled');
+        } else {
+          tab.classList.add('disabled');
+        }
+      });
+    };
   }
   
-  /**
-   * Update the displayed logo in the spinner
-   * @param {Object} product - The product to display
-   */
   updateDisplayedLogo(product) {
     this.currentLogoElement.src = product.image;
     this.currentLogoElement.alt = product.name;
   }
   
-  /**
-   * Start the spinner animation
-   * @returns {Promise} Resolves when spinning is complete
-   */
   spin() {
     if (this.isSpinning) return Promise.resolve();
-    // Randomize order for fair spin
-    this.shuffleProducts();
-
+    
     this.isSpinning = true;
+    this.toggleTabs(false); // Disable tabs while spinning
     this.spinningTimeLeft = this.spinningTime;
     this.resultElement.classList.add('hidden');
     this.resultElement.classList.remove('visible');
@@ -57,20 +77,15 @@ class FortuneSpinner {
     return new Promise((resolve) => {
       this.startSpinAnimation();
       
-      // Set timeout to stop spinning after spinningTime
       setTimeout(() => {
         this.slowdownAndStop(resolve);
-      }, this.spinningTimeLeft / 2); // Start slowing down halfway through
+      }, this.spinningTimeLeft / 2);
     });
   }
   
-  /**
-   * Start the rapid logo cycling animation
-   */
   startSpinAnimation() {
     let currentSpeed = this.spinSpeed;
     this.spinInterval = setInterval(() => {
-      // Update to next product in rotation
       this.currentProductIndex = (this.currentProductIndex + 1) % this.products.length;
       this.updateDisplayedLogo(this.products[this.currentProductIndex]);
     }, currentSpeed);
@@ -88,10 +103,10 @@ class FortuneSpinner {
     const slowdownInterval = setInterval(() => {
       currentSpeed *= this.slowdownFactor;
       steps++;
-  
+      
       // Clear current interval and set a new one with slower speed
       clearInterval(this.spinInterval);
-  
+      
       // Stop after a few slow steps, not when fully slow
       if (steps >= maxStepsBeforeStop || currentSpeed > 400) {
         clearInterval(slowdownInterval);
@@ -105,23 +120,16 @@ class FortuneSpinner {
     }, 300);
   }
   
-  
-  /**
-   * Stop the spinning animation and show the result
-   * @param {Function} resolve - Promise resolve function
-   */
   stopSpinning(resolve) {
     clearInterval(this.spinInterval);
     this.isSpinning = false;
+    this.toggleTabs(true); // Re-enable tabs after spinning
     
-    // Select a random winner
-    const winningProduct = getRandomProduct();
+    const winningProduct = getRandomProduct(this.currentCategory);
     
-    // Update display with winning product
     this.updateDisplayedLogo(winningProduct);
     this.currentLogoElement.classList.add('celebrate');
     
-    // Show result after a short delay
     setTimeout(() => {
       this.showResult(winningProduct);
       this.currentLogoElement.classList.remove('celebrate');
@@ -129,10 +137,6 @@ class FortuneSpinner {
     }, 500);
   }
   
-  /**
-   * Display the result screen with winner information
-   * @param {Object} product - The winning product
-   */
   showResult(product) {
     this.winnerLogoElement.src = product.image;
     this.winnerLogoElement.alt = product.name;
@@ -140,23 +144,21 @@ class FortuneSpinner {
     
     this.resultElement.classList.remove('hidden');
     
-    // Use setTimeout to ensure the transition applies
     setTimeout(() => {
       this.resultElement.classList.add('visible');
     }, 10);
   }
   
-  /**
-   * Reset the spinner to its initial state
-   */
   reset() {
     this.resultElement.classList.remove('visible');
     
     setTimeout(() => {
       this.resultElement.classList.add('hidden');
-      // Reset to Zoho logo without selecting a product
-      this.currentProductIndex = -1;
-      this.currentLogoElement.src = './images/zoho.png';
+      this.currentProductIndex = 0;
+      this.updateDisplayedLogo(this.products[0]);
+
+      // Reset the logo to zoho.png when resetting the spinner
+      this.currentLogoElement.src = 'images/zoho.png';
       this.currentLogoElement.alt = 'Zoho';
     }, 300);
   }
