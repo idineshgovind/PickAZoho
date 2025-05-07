@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="./images/notebook.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pick-a-Zoho</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/spinner.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="background-gradient"></div>
+      <header>
+        <img src="./images/zoho.png" alt="Zoho" class="zoho-logo" />
+        <h1>Pick-a-Zoho</h1>
+        <p class="subtitle">Try your luck with Zoho products!</p>
+      </header>
+      
+      <main>
+        <div id="result" class="result hidden">
+          <div class="winner-message">
+            <h2>🎉 Show your mobile — if you have our app, you're the winner!</h2>
+            <div class="winner-logo-container">
+              <img id="winner-logo" src="" alt="Winner" class="winner-logo" />
+              <p id="winner-name" class="winner-name"></p>
+            </div>
+            <button id="spin-again" class="spin-again-button">Spin Again</button>
+          </div>
+        </div>
+
+        <div class="spinner-container">
+          <div class="spinner-glow"></div>
+          <div id="spinner" class="spinner">
+            <div id="spinner-display" class="spinner-display">
+              <img id="current-logo" src="./images/zoho.png" alt="Zoho" class="logo-image" />
+            </div>
+          </div>
+          
+          <div class="controls">
+            <button id="spin-button" class="spin-button">SPIN</button>
+          </div>
+        </div>
+      </main>
+      
+      <footer>
+        <p>&copy; 2025 Pick-a-Zoho</p>
+      </footer>
+    </div>
+    
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
