@@ -1,0 +1,199 @@
+/* Spinner container styles */
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.spinner-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+  filter: blur(20px);
+  z-index: -1;
+}
+
+.spinner {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin-bottom: var(--spacing-lg);
+  background-color: var(--card-background);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 
+    0 8px 24px var(--shadow-color),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+.spinner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+}
+
+.spinner-display {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-normal);
+  padding: var(--spacing-md);
+}
+
+.logo-image {
+  width: 70%;
+  max-height: 70%;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity var(--transition-normal);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.controls {
+  margin-top: var(--spacing-md);
+  display: flex;
+  justify-content: center;
+}
+
+/* Result styles */
+.result {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--transition-normal);
+}
+
+.result.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.winner-message {
+  background-color: var(--card-background);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  border: 2px solid var(--border-color);
+  backdrop-filter: blur(8px);
+  text-align: center;
+  max-width: 600px;
+  width: 90%;
+  margin: var(--spacing-md);
+  transform: scale(0.95);
+  transition: transform var(--transition-normal);
+}
+
+.result.visible .winner-message {
+  transform: scale(1);
+}
+
+.winner-message h2 {
+  font-size: var(--font-size-lg);
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.winner-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.winner-logo {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: var(--spacing-md);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.winner-name {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animation classes */
+.spinning {
+  animation: spin 0.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.celebrate {
+  animation: celebrate 0.5s ease-in-out;
+}
+
+@keyframes celebrate {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .spinner {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .winner-logo {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .winner-message h2 {
+    font-size: var(--font-size-md);
+  }
+}
